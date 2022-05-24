@@ -12,6 +12,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
 } from "@mui/material";
 
@@ -24,16 +25,42 @@ const App = () => {
 
   const handleSubmit = () => {
     setOpen(false);
+    setBreakfastItems(
+      breakfastItems.sort(() => 0.5 - Math.random()).slice(0, 7)
+    );
+    setLunchItems(lunchItems.sort(() => 0.5 - Math.random()).slice(0, 7));
+    setDinnerItems(dinnerItems.sort(() => 0.5 - Math.random()).slice(0, 7));
     setShowTable(true);
   };
 
-  console.log(breakfastItems, lunchItems, dinnerItems);
+  const swapItem = (props) => {
+    var tempArr = [...props.items];
+    var randomId = Math.floor(Math.random() * 4);
+    var temp = tempArr[props.id];
+    tempArr[props.id] = tempArr[randomId];
+    tempArr[randomId] = temp;
+    switch (props.itemNumber) {
+      case 1:
+        setBreakfastItems([...tempArr]);
+        break;
+      case 2:
+        setLunchItems([...tempArr]);
+        break;
+      case 3:
+        setDinnerItems([...tempArr]);
+        break;
+    }
+  };
 
   return (
     <div className="App">
       <Dialog open={open} maxWidth="lg" fullWidth>
         <DialogTitle>Select Food Items</DialogTitle>
         <DialogContent>
+          <DialogContentText>
+            Select upto 10 items of each type.
+          </DialogContentText>
+
           <SelectItems
             itemsList={breakFastItemsList}
             setItems={setBreakfastItems}
@@ -61,6 +88,7 @@ const App = () => {
           breakfastItems={breakfastItems}
           lunchItems={lunchItems}
           dinnerItems={dinnerItems}
+          swapItem={swapItem}
         />
       )}
     </div>
