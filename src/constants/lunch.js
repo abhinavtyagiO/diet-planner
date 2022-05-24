@@ -1,1 +1,17 @@
-export const lunchItemsList = [];
+export const lunchItemsList = [
+  "Grilled Cheese",
+  "Veg Roll",
+  "Chicken Roll",
+  "Pizza",
+  "Waffles",
+  "Hotdog",
+  "Burger",
+  "Mac n Cheese",
+  "Sweet Corn",
+  "Dabeli",
+  "Pasta",
+  "Noodles",
+  "Wrap",
+  "Pudding",
+  "Cookies",
+];

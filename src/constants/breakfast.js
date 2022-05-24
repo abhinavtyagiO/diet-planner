@@ -1,1 +1,17 @@
-export const breakFastItemsList = ["Oatmeal", "Cornflakes"];
+export const breakFastItemsList = [
+  "Oatmeal",
+  "Cornflakes",
+  "Aloo Paratha",
+  "Idli",
+  "Dosa",
+  "Poha",
+  "Sandwich",
+  "Maggi",
+  "Upma",
+  "Uttapam",
+  "Milkshake",
+  "Toast",
+  "Pancakes",
+  "Vada",
+  "Pav Bhaji",
+];

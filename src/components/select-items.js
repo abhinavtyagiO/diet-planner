@@ -10,6 +10,16 @@ import { Box } from "@mui/system";
 import React from "react";
 
 const SelectItems = (props) => {
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      },
+    },
+  };
+
   const handleChange = (event) => {
     const {
       target: { value },
@@ -19,9 +29,10 @@ const SelectItems = (props) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl fullWidth sx={{ m: 1 }}>
         <InputLabel>Select Items</InputLabel>
         <Select
+          fullWidth
           multiple
           value={props.items}
           onChange={handleChange}
@@ -33,7 +44,7 @@ const SelectItems = (props) => {
               ))}
             </Box>
           )}
-          //   MenuProps={MenuProps}
+          MenuProps={MenuProps}
         >
           {props.itemsList.map((item, id) => (
             <MenuItem key={id} value={item}>
