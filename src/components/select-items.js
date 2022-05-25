@@ -32,6 +32,7 @@ const SelectItems = (props) => {
       <FormControl fullWidth sx={{ m: 1 }}>
         <InputLabel>Select Items</InputLabel>
         <Select
+          id="select-item"
           fullWidth
           multiple
           value={props.items}

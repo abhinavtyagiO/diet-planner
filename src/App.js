@@ -52,6 +52,8 @@ const App = () => {
     }
   };
 
+  console.log(breakfastItems, lunchItems, dinnerItems);
+
   return (
     <div className="App">
       <Dialog open={open} maxWidth="lg" fullWidth>
@@ -78,7 +80,16 @@ const App = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button
+            disabled={
+              breakfastItems.length < 10 ||
+              lunchItems.length < 10 ||
+              dinnerItems.length < 10
+            }
+            className="modal-submit-btn"
+            variant="contained"
+            onClick={handleSubmit}
+          >
             Submit
           </Button>
         </DialogActions>
