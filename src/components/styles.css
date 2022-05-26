@@ -1,3 +1,26 @@
 .diet-table-container {
   display: flex;
 }
+
+.form-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.table-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

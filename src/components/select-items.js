@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Chip,
   FormControl,
@@ -7,18 +8,9 @@ import {
   Select,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
 
 const SelectItems = (props) => {
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      },
-    },
-  };
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
     const {
@@ -26,13 +18,25 @@ const SelectItems = (props) => {
     } = event;
     props.setItems(typeof value === "string" ? value.split(",") : value);
   };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  console.log(open);
 
   return (
-    <div>
-      <FormControl fullWidth sx={{ m: 1 }}>
+    <div className="form-container" >
+      <FormControl sx={{ m: 1, width: "60%" }}>
         <InputLabel>Select Items</InputLabel>
         <Select
-          id="select-item"
+          open={open}
+          onClick={handleOpen}
+          onClose={handleClose}
+          name={`select-item${props.id}`}
+          id={`select-item${props.id}`}
           fullWidth
           multiple
           value={props.items}
@@ -45,10 +49,10 @@ const SelectItems = (props) => {
               ))}
             </Box>
           )}
-          MenuProps={MenuProps}
+          // MenuProps={MenuProps}
         >
           {props.itemsList.map((item, id) => (
-            <MenuItem key={id} value={item}>
+            <MenuItem key={id} id={`menu-item${props.id}${id}`} value={item}>
               {item}
             </MenuItem>
           ))}

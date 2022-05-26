@@ -14,6 +14,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Typography,
 } from "@mui/material";
 
 const App = () => {
@@ -52,48 +53,48 @@ const App = () => {
     }
   };
 
-  console.log(breakfastItems, lunchItems, dinnerItems);
+  // console.log(breakfastItems, lunchItems, dinnerItems);
 
   return (
     <div className="App">
-      <Dialog open={open} maxWidth="lg" fullWidth>
-        <DialogTitle>Select Food Items</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Select upto 10 items of each type.
-          </DialogContentText>
+      <div className="heading-container">
+        <Typography data-id="heading" variant="h4">
+          Select Food Items
+        </Typography>
+      </div>
+      <SelectItems
+        id="1"
+        itemsList={breakFastItemsList}
+        setItems={setBreakfastItems}
+        items={breakfastItems}
+      />
+      <SelectItems
+        id="2"
+        itemsList={lunchItemsList}
+        setItems={setLunchItems}
+        items={lunchItems}
+      />
+      <SelectItems
+        id="3"
+        itemsList={dinnerItemsList}
+        setItems={setDinnerItems}
+        items={dinnerItems}
+      />
+      <div className="heading-container">
+        <Button
+          disabled={
+            breakfastItems.length < 10 ||
+            lunchItems.length < 10 ||
+            dinnerItems.length < 10
+          }
+          className="modal-submit-btn"
+          variant="contained"
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+      </div>
 
-          <SelectItems
-            itemsList={breakFastItemsList}
-            setItems={setBreakfastItems}
-            items={breakfastItems}
-          />
-          <SelectItems
-            itemsList={lunchItemsList}
-            setItems={setLunchItems}
-            items={lunchItems}
-          />
-          <SelectItems
-            itemsList={dinnerItemsList}
-            setItems={setDinnerItems}
-            items={dinnerItems}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button
-            disabled={
-              breakfastItems.length < 10 ||
-              lunchItems.length < 10 ||
-              dinnerItems.length < 10
-            }
-            className="modal-submit-btn"
-            variant="contained"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
       {showTable && (
         <DietTable
           breakfastItems={breakfastItems}
